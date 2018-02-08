@@ -3,6 +3,7 @@ package nl.dionsegijn.konfetti
 import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.Path
 import android.graphics.RectF
 import nl.dionsegijn.konfetti.models.Shape
 import nl.dionsegijn.konfetti.models.Size
@@ -26,6 +27,7 @@ class Confetti(var location: Vector,
     private var rotation = 0f
     private var rotationWidth = width
     private var rectF = RectF()
+    private val path = Path()
 
     // Expected frame rate
     private var speedF = 60f
@@ -109,11 +111,18 @@ class Confetti(var location: Vector,
 
         rectF.set(left, location.y, right, location.y + getSize())
 
+        path.reset()
+        path.moveTo(left, location.y + getSize())
+        path.lineTo(left, location.y)
+        path.lineTo(right, location.y)
+        path.close()
+
         canvas.save()
         canvas.rotate(rotation, rectF.centerX(), rectF.centerY())
         when (shape) {
             Shape.CIRCLE -> canvas.drawOval(rectF, paint)
             Shape.RECT -> canvas.drawRect(rectF, paint)
+            Shape.TRIANGLE -> canvas.drawPath(path, paint)
         }
         canvas.restore()
     }

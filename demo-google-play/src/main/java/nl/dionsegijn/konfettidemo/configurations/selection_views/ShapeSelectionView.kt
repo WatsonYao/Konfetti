@@ -32,7 +32,7 @@ class ShapeSelectionView(
         return dp * resources.displayMetrics.density
     }
 
-    private val availableShapes = arrayOf(Shape.CIRCLE, Shape.RECT)
+    private val availableShapes = arrayOf(Shape.CIRCLE, Shape.RECT,Shape.TRIANGLE)
 
     init {
         inflate(context, R.layout.view_section_shape_selection, this)

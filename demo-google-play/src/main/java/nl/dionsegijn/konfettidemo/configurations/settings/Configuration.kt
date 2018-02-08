@@ -24,5 +24,5 @@ open class Configuration(
     var minSpeed: Float = 4f
     var maxSpeed: Float = 7f
     var colors = intArrayOf(R.color.lt_yellow, R.color.lt_orange, R.color.lt_purple, R.color.lt_pink)
-    var shapes: Array<Shape> = arrayOf(Shape.RECT, Shape.CIRCLE)
+    var shapes: Array<Shape> = arrayOf(Shape.RECT, Shape.CIRCLE,Shape.TRIANGLE)
 }

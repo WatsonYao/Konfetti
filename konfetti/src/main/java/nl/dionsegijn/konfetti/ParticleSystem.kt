@@ -67,6 +67,15 @@ class ParticleSystem(private val konfettiView: KonfettiView) {
     }
 
     /**
+     * One of the colors will be randomly picked when confetti is generated
+     * Default color is Color.RED
+     */
+    fun addColors(colors: List<Int>): ParticleSystem {
+        this.colors = colors.toIntArray()
+        return this
+    }
+
+    /**
      * Add one or more different sizes by defining a [Size] in dip and optionally its mass
      */
     fun addSizes(vararg possibleSizes: Size): ParticleSystem {
@@ -79,6 +88,15 @@ class ParticleSystem(private val konfettiView: KonfettiView) {
      * Default shape is [Shape.RECT] rectangle
      */
     fun addShapes(vararg shapes: Shape): ParticleSystem {
+        this.shapes = shapes.filterIsInstance<Shape>().toTypedArray()
+        return this
+    }
+
+    /**
+     * Configure one or more shapes predefined in [Shape]
+     * Default shape is [Shape.RECT] rectangle
+     */
+    fun addShapes(shapes: List<Shape>): ParticleSystem {
         this.shapes = shapes.filterIsInstance<Shape>().toTypedArray()
         return this
     }
